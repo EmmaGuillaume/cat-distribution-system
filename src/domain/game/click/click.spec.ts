@@ -1,13 +1,13 @@
 // sum.test.js
+import { GameState } from "@/domain/game/gameState";
 import { expect, test } from "vitest";
 import { click } from "./click";
-import { GameState } from "@/lib/gameState";
 
 test.each([
   {
     gameState: {
       cats: 1,
-      grannys: 0,
+      grannies: 0,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -15,7 +15,7 @@ test.each([
     },
     result: {
       cats: 2,
-      grannys: 0,
+      grannies: 0,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -25,7 +25,7 @@ test.each([
   {
     gameState: {
       cats: 18,
-      grannys: 0,
+      grannies: 0,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -33,7 +33,7 @@ test.each([
     },
     result: {
       cats: 19,
-      grannys: 0,
+      grannies: 0,
       catBars: 0,
       trucks: 0,
       factory: 0,

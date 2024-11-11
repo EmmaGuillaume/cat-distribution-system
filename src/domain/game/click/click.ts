@@ -1,4 +1,4 @@
-import { GameState } from "@/lib/gameState";
+import { GameState } from "@/domain/game/gameState";
 
 const click = (game: GameState): GameState => {
   const newGameState = { ...game };

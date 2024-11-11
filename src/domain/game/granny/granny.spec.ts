@@ -1,14 +1,13 @@
 // sum.test.js
-import { expect, test } from "vitest";
-import { describe } from "vitest";
-import { GameState } from "@/lib/gameState";
-import { buyGranny } from "@/lib/granny/grannys";
+import { GameState } from "@/domain/game/gameState";
+import { buyGranny, makeGranniesWork } from "@/domain/game/granny/granny";
+import { describe, expect, test } from "vitest";
 
 describe.each([
   {
     gameState: {
       cats: 10,
-      grannys: 0,
+      grannies: 0,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -16,7 +15,7 @@ describe.each([
     },
     result: {
       cats: 0,
-      grannys: 1,
+      grannies: 1,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -26,7 +25,7 @@ describe.each([
   {
     gameState: {
       cats: 19,
-      grannys: 19,
+      grannies: 19,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -34,7 +33,7 @@ describe.each([
     },
     result: {
       cats: 9,
-      grannys: 20,
+      grannies: 20,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -52,7 +51,7 @@ describe.each([
       expect(nextState).toStrictEqual(result);
       expect(nextState).not.toStrictEqual(gameState);
     });
-    test(`given ${gameState.grannys} grannys when buy granny then grannys should be ${result.grannys}`, () => {
+    test(`given ${gameState.grannies} grannies when buy granny then grannies should be ${result.grannies}`, () => {
       //act
       const nextState = buyGranny(gameState);
 
@@ -67,7 +66,7 @@ test.each([
   {
     gameState: {
       cats: 1,
-      grannys: 0,
+      grannies: 0,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -77,7 +76,7 @@ test.each([
   {
     gameState: {
       cats: 9,
-      grannys: 19,
+      grannies: 19,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -96,7 +95,7 @@ describe.each([
   {
     gameState: {
       cats: 0,
-      grannys: 1,
+      grannies: 1,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -104,7 +103,7 @@ describe.each([
     },
     result: {
       cats: 1,
-      grannys: 1,
+      grannies: 1,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -113,16 +112,16 @@ describe.each([
   },
   {
     gameState: {
-      cats: 19,
-      grannys: 19,
+      cats: 0,
+      grannies: 4,
       catBars: 0,
       trucks: 0,
       factory: 0,
       researchCenter: 0,
     },
     result: {
-      cats: 20,
-      grannys: 1,
+      cats: 4,
+      grannies: 4,
       catBars: 0,
       trucks: 0,
       factory: 0,
@@ -130,19 +129,11 @@ describe.each([
     },
   },
 ])(
-  "grannys production",
+  "grannies production",
   ({ gameState, result }: { gameState: GameState; result: GameState }) => {
-    test(`given ${gameState.cats} grannys when granny exist then cats should be ${result.cats}`, () => {
+    test(`given ${gameState.cats} grannies and ${gameState.cats} cats, then next state should have ${result.cats} cats`, () => {
       //act
-      const nextState = buyGranny(gameState);
-
-      //assert
-      expect(nextState).toStrictEqual(result);
-      expect(nextState).not.toStrictEqual(gameState);
-    });
-    test(`given ${gameState.grannys} grannys when buy granny then grannys should be ${result.grannys}`, () => {
-      //act
-      const nextState = buyGranny(gameState);
+      const nextState = makeGranniesWork(gameState);
 
       //assert
       expect(nextState).toStrictEqual(result);

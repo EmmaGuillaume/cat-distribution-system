@@ -1,6 +1,6 @@
 type GameState = {
   cats: number;
-  grannys: number;
+  grannies: number;
   catBars: number;
   trucks: number;
   factory: number;
