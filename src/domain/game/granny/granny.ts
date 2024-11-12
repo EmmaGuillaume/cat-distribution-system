@@ -1,8 +1,9 @@
-import { GameState } from "@/domain/game/gameState";
 const GRANNY_PRICE = 10;
 
-const buyGranny = (gameState: GameState): GameState => {
-  const newGameState = { ...gameState };
+type GrannyState = { cats: number; grannies: number };
+
+const buyGranny = <T extends GrannyState>(state: T): T => {
+  const newGameState = { ...state };
   if (newGameState.cats < GRANNY_PRICE) {
     throw new Error("Not enough cats");
   }
@@ -12,11 +13,15 @@ const buyGranny = (gameState: GameState): GameState => {
   return newGameState;
 };
 
-const makeGranniesWork = (gameState: GameState): GameState => {
-  const newGameState = { ...gameState };
-  newGameState.cats += gameState.grannies;
+const makeGranniesWork = <T extends GrannyState>(state: T): T => {
+  const newGameState = { ...state };
+  newGameState.cats += state.grannies;
 
   return newGameState;
 };
 
-export { buyGranny, makeGranniesWork };
+const canBuyGranny = <T extends GrannyState>(state: T): boolean => {
+  return state.cats >= GRANNY_PRICE;
+};
+
+export { buyGranny, makeGranniesWork, type GrannyState, canBuyGranny };
