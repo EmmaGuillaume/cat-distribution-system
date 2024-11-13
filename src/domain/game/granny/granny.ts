@@ -24,4 +24,10 @@ const canBuyGranny = <T extends GrannyState>(state: T): boolean => {
   return state.cats >= GRANNY_PRICE;
 };
 
-export { buyGranny, makeGranniesWork, type GrannyState, canBuyGranny };
+export {
+  buyGranny,
+  makeGranniesWork,
+  type GrannyState,
+  canBuyGranny,
+  GRANNY_PRICE,
+};

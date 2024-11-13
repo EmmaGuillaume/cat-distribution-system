@@ -1,5 +1,6 @@
 "use client";
 import { useGame } from "@/hooks/useGame";
+import { GRANNY_PRICE } from "@/domain/game/granny/granny";
 
 export default function Home() {
   const { gameState, click, buyGranny, canBuyGranny } = useGame({
@@ -18,14 +19,14 @@ export default function Home() {
         <p>{gameState.grannies} grannies</p>
       </div>
       <button onClick={click} className="px-4 py-2 border rounded-xl">
-        Make a cat
+        Make a cat - free
       </button>
       <button
         disabled={!canBuyGranny}
         onClick={buyGranny}
         className="px-4 py-2 border rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Buy a granny
+        Buy a granny - {GRANNY_PRICE} cats
       </button>
     </div>
   );
