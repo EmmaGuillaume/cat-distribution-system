@@ -1,5 +1,4 @@
-// sum.test.js
-import { GameState } from "@/domain/game/gameState";
+import { GameState } from "@/domain/game/game";
 import { expect, test } from "vitest";
 import { click } from "./click";
 
@@ -51,7 +50,3 @@ test.each([
     expect(nextState).not.toStrictEqual(gameState);
   }
 );
-
-//totale des chats = 3
-//si on click sur le bouton ajouter un chat
-//totale des chats = 4

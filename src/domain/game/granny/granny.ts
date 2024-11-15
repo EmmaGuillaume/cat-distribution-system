@@ -25,9 +25,9 @@ const canBuyGranny = <T extends GrannyState>(state: T): boolean => {
 };
 
 export {
+  GRANNY_PRICE,
   buyGranny,
+  canBuyGranny,
   makeGranniesWork,
   type GrannyState,
-  canBuyGranny,
-  GRANNY_PRICE,
 };

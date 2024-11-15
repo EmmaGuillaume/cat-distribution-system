@@ -15,7 +15,7 @@ const buyCatBar = <T extends CatBarState>(state: T): T => {
   return newGameState;
 };
 
-const makeCatBarWork = <T extends CatBarState>(state: T): T => {
+const makeCatBarsWork = <T extends CatBarState>(state: T): T => {
   const newGameState = { ...state };
 
   for (let i = 0; i < state.catBars; i++) {
@@ -30,10 +30,10 @@ const canBuyCatBar = <T extends CatBarState>(state: T): boolean => {
 };
 
 export {
-  type CatBarState,
-  buyCatBar,
-  makeCatBarWork,
   CATBAR_PRICE,
   CATBAR_PRODUCTION,
+  buyCatBar,
   canBuyCatBar,
+  makeCatBarsWork,
+  type CatBarState,
 };

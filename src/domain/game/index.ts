@@ -1,7 +1,6 @@
-import { click } from "@/domain/game/click/click";
-import type { GameState } from "@/domain/game/gameState";
-import { buyGranny } from "@/domain/game/granny/granny";
-import { buyCatBar } from "@/domain/game/catBar/catBar";
-import { iterate } from "@/domain/game/iteration/iteration";
-
-export { buyGranny, click, iterate, type GameState, buyCatBar };
+export * from "@/domain/game/catBar/catBar";
+export * from "@/domain/game/click/click";
+export * from "@/domain/game/game";
+export * from "@/domain/game/granny/granny";
+export * from "@/domain/game/iteration/iteration";
+export * from "@/domain/game/truck/truck";

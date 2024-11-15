@@ -1,11 +1,11 @@
 // sum.test.js
 import {
   buyCatBar,
-  makeCatBarWork,
   canBuyCatBar,
+  CatBarState,
+  makeCatBarsWork,
 } from "@/domain/game/catBar/catBar";
 import { describe, expect, test } from "vitest";
-import { CatBarState } from "@/domain/game/catBar/catBar";
 
 describe("buyCatBar", () => {
   describe.each([
@@ -101,11 +101,11 @@ describe.each([
     },
   },
 ])(
-  "catBars production",
+  "makeCatBarsWork",
   ({ gameState, result }: { gameState: CatBarState; result: CatBarState }) => {
     test(`given ${gameState.catBars} catBars and ${gameState.cats} cats, then next state should have ${result.cats} cats`, () => {
       //act
-      const nextState = makeCatBarWork(gameState);
+      const nextState = makeCatBarsWork(gameState);
 
       //assert
       expect(nextState).toStrictEqual(result);
@@ -114,7 +114,7 @@ describe.each([
   }
 );
 
-describe("can Buy CatBar", () => {
+describe("canBuyCatBar", () => {
   test(`given 100 cats I can buy catBar`, () => {
     //act
     const can = canBuyCatBar({ cats: 100, catBars: 0 });
