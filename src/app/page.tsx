@@ -13,13 +13,17 @@ export default function Home() {
     factory: 0,
     researchCenter: 0,
   });
+
   return (
     <div className="h-svh w-full flex flex-col items-center justify-center gap-4">
       <h1 className="text-xl">Cat Distribution System</h1>
       <div>
-        <p>{game.state.cats} cats</p>
+        <p>
+          {game.state.cats} cats - {game.averageCats()} cats/s
+        </p>
         <p>{game.state.grannies} grannies</p>
         <p>{game.state.catBars} catBars</p>
+        <p>{game.state.trucks} trucks</p>
       </div>
       <button onClick={game.click} className="px-4 py-2 border rounded-xl">
         Make a cat - free
