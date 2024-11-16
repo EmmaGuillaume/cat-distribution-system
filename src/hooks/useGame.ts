@@ -14,23 +14,25 @@ const useGame = (initialGameState: Game.GameState) => {
     };
   }, [gameState]);
 
-  const apply = (action: Game.GameAction) => setGameState(action(gameState));
+  const apply = (fn: Game.GameAction<Game.GameState>) =>
+    setGameState(fn(gameState));
 
-  const check = (actionChecker: Game.GameActionChecker) =>
-    actionChecker(gameState);
+  const compute = <T>(fn: Game.GameAction<T>) => fn(gameState);
 
   return {
     state: gameState,
     click: () => apply(Game.click),
+    canBuyGranny: compute(Game.canBuyGranny),
     buyGranny: () => apply(Game.buyGranny),
-    canBuyGranny: check(Game.canBuyGranny),
+    canBuyCatBar: compute(Game.canBuyCatBar),
     buyCatBar: () => apply(Game.buyCatBar),
-    canBuyCatBar: check(Game.canBuyCatBar),
+    canBuyTruck: compute(Game.canBuyTruck),
     buyTruck: () => apply(Game.buyTruck),
-    canBuyTruck: check(Game.canBuyTruck),
-    averageCats: () => Game.averageCats(gameState),
-    canBuyFactory: check(Game.canBuyFactory),
+    canBuyFactory: compute(Game.canBuyFactory),
     buyFactory: () => apply(Game.buyFactory),
+    canBuyResearchCenter: compute(Game.canBuyResearchCenter),
+    buyResearchCenter: () => apply(Game.buyResearchCenter),
+    catsPerIteration: compute(Game.catsPerIteration),
   };
 };
 

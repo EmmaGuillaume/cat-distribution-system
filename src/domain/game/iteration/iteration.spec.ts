@@ -3,6 +3,7 @@ import * as factory from "@/domain/game/factory/factory";
 import type { GameState } from "@/domain/game/game";
 import * as granny from "@/domain/game/granny/granny";
 import { iterate } from "@/domain/game/iteration/iteration";
+import * as researchCenter from "@/domain/game/researchCenter/researchCenter";
 import * as truck from "@/domain/game/truck/truck";
 import { describe, expect, test, vi } from "vitest";
 
@@ -52,6 +53,17 @@ describe("iterate", () => {
   test(`should make factories work`, () => {
     // arrange
     const spy = vi.spyOn(factory, "makeFactoriesWork");
+
+    //act
+    iterate(DEFAULT_GAME_STATE);
+
+    //assert
+    expect(spy).toHaveBeenCalledOnce();
+  });
+
+  test(`should make research centers work`, () => {
+    // arrange
+    const spy = vi.spyOn(researchCenter, "makeResearchCentersWork");
 
     //act
     iterate(DEFAULT_GAME_STATE);

@@ -1,14 +1,15 @@
-import { catBarsProductionPerSecond } from "@/domain/game/catBar/catBar";
-import { factoryProductionPerSecond } from "@/domain/game/factory/factory";
+import { catBarsPerIteration } from "@/domain/game/catBar/catBar";
+import { factoriesPerIteration } from "@/domain/game/factory/factory";
 import { GameState } from "@/domain/game/game";
-import { granniesProductionPerSecond } from "@/domain/game/granny/granny";
-import { truckProductionPerSecond } from "@/domain/game/truck/truck";
+import { granniesPerIteration } from "@/domain/game/granny/granny";
+import { researchCentersPerIteration } from "@/domain/game/researchCenter/researchCenter";
+import { trucksPerIteration } from "@/domain/game/truck/truck";
 
-const averageCats = (gameState: GameState): number =>
-  granniesProductionPerSecond(gameState) +
-  catBarsProductionPerSecond(gameState) +
-  truckProductionPerSecond(gameState) +
-  factoryProductionPerSecond(gameState) +
-  gameState.researchCenters * 500;
+const catsPerIteration = (gameState: GameState): number =>
+  granniesPerIteration(gameState) +
+  catBarsPerIteration(gameState) +
+  trucksPerIteration(gameState) +
+  factoriesPerIteration(gameState) +
+  researchCentersPerIteration(gameState);
 
-export { averageCats };
+export { catsPerIteration };

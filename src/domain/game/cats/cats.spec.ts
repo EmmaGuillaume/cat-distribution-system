@@ -1,5 +1,5 @@
 import { GameState } from "@/domain/game";
-import { averageCats } from "@/domain/game/cats/cats";
+import { catsPerIteration } from "@/domain/game/cats/cats";
 import { expect, test } from "vitest";
 
 test.each([
@@ -43,7 +43,7 @@ test.each([
   "average cats per second",
   ({ gameState, result }: { gameState: GameState; result: GameState }) => {
     //act
-    const nextState = averageCats(gameState);
+    const nextState = catsPerIteration(gameState);
 
     expect(nextState).toStrictEqual(result.cats);
     expect(nextState).not.toStrictEqual(gameState);

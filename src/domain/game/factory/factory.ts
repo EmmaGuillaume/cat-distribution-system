@@ -14,13 +14,13 @@ const buyFactory = <T extends FactoryState>(state: T): T => {
   return newGameState;
 };
 
-const factoryProductionPerSecond = (state: FactoryState): number => {
+const factoriesPerIteration = (state: FactoryState): number => {
   return state.factories * FACTORY_CATS_PRODUCTION;
 };
 
 const makeFactoriesWork = <T extends FactoryState>(state: T): T => {
   const newGameState = { ...state };
-  newGameState.cats += factoryProductionPerSecond(newGameState);
+  newGameState.cats += factoriesPerIteration(newGameState);
 
   return newGameState;
 };
@@ -33,7 +33,7 @@ export {
   FACTORY_PRICE,
   buyFactory,
   canBuyFactory,
-  factoryProductionPerSecond,
+  factoriesPerIteration,
   makeFactoriesWork,
   type FactoryState,
 };

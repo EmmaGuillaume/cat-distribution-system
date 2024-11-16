@@ -7,7 +7,6 @@ type GameState = {
   researchCenters: number;
 };
 
-type GameAction = (state: GameState) => GameState;
-type GameActionChecker = (state: GameState) => boolean;
+type GameAction<ReturnT = unknown> = (state: GameState) => ReturnT;
 
-export type { GameAction, GameActionChecker, GameState };
+export type { GameAction, GameState };

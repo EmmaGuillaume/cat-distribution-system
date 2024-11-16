@@ -16,7 +16,7 @@ const buyTruck = <T extends TruckState>(state: T): T => {
 
 const makeTrucksWork = <T extends TruckState>(state: T): T => {
   const newGameState = { ...state };
-  newGameState.cats += truckProductionPerSecond(state);
+  newGameState.cats += trucksPerIteration(state);
 
   return newGameState;
 };
@@ -25,16 +25,16 @@ const canBuyTruck = <T extends TruckState>(state: T): boolean => {
   return state.cats >= TRUCK_PRICE;
 };
 
-const truckProductionPerSecond = (state: TruckState): number => {
+const trucksPerIteration = (state: TruckState): number => {
   return state.trucks * TRUCK_PRODUCTION;
 };
 
 export {
+  TRUCK_PRICE,
+  TRUCK_PRODUCTION,
   buyTruck,
   canBuyTruck,
   makeTrucksWork,
-  TRUCK_PRICE,
+  trucksPerIteration,
   type TruckState,
-  TRUCK_PRODUCTION,
-  truckProductionPerSecond,
 };

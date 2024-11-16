@@ -16,7 +16,7 @@ const buyGranny = <T extends GrannyState>(state: T): T => {
 
 const makeGranniesWork = <T extends GrannyState>(state: T): T => {
   const newGameState = { ...state };
-  newGameState.cats += granniesProductionPerSecond(state);
+  newGameState.cats += granniesPerIteration(state);
 
   return newGameState;
 };
@@ -25,16 +25,16 @@ const canBuyGranny = <T extends GrannyState>(state: T): boolean => {
   return state.cats >= GRANNY_PRICE;
 };
 
-const granniesProductionPerSecond = (state: GrannyState): number => {
+const granniesPerIteration = (state: GrannyState): number => {
   return state.grannies * GRANNY_PRODUCTION;
 };
 
 export {
   GRANNY_PRICE,
+  GRANNY_PRODUCTION,
   buyGranny,
   canBuyGranny,
+  granniesPerIteration,
   makeGranniesWork,
   type GrannyState,
-  GRANNY_PRODUCTION,
-  granniesProductionPerSecond,
 };
