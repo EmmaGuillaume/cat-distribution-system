@@ -1,4 +1,5 @@
 import * as catBar from "@/domain/game/catBar/catBar";
+import * as factory from "@/domain/game/factory/factory";
 import type { GameState } from "@/domain/game/game";
 import * as granny from "@/domain/game/granny/granny";
 import { iterate } from "@/domain/game/iteration/iteration";
@@ -10,8 +11,8 @@ const DEFAULT_GAME_STATE: GameState = {
   grannies: 0,
   catBars: 0,
   trucks: 0,
-  factory: 0,
-  researchCenter: 0,
+  factories: 0,
+  researchCenters: 0,
 };
 
 describe("iterate", () => {
@@ -40,6 +41,17 @@ describe("iterate", () => {
   test(`should make trucks work`, () => {
     // arrange
     const spy = vi.spyOn(truck, "makeTrucksWork");
+
+    //act
+    iterate(DEFAULT_GAME_STATE);
+
+    //assert
+    expect(spy).toHaveBeenCalledOnce();
+  });
+
+  test(`should make factories work`, () => {
+    // arrange
+    const spy = vi.spyOn(factory, "makeFactoriesWork");
 
     //act
     iterate(DEFAULT_GAME_STATE);

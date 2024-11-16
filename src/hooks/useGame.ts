@@ -29,6 +29,8 @@ const useGame = (initialGameState: Game.GameState) => {
     buyTruck: () => apply(Game.buyTruck),
     canBuyTruck: check(Game.canBuyTruck),
     averageCats: () => Game.averageCats(gameState),
+    canBuyFactory: check(Game.canBuyFactory),
+    buyFactory: () => apply(Game.buyFactory),
   };
 };
 

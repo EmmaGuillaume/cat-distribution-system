@@ -3,8 +3,8 @@ type GameState = {
   grannies: number;
   catBars: number;
   trucks: number;
-  factory: number;
-  researchCenter: number;
+  factories: number;
+  researchCenters: number;
 };
 
 type GameAction = (state: GameState) => GameState;
