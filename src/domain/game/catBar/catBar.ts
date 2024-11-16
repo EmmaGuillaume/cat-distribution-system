@@ -17,7 +17,7 @@ const buyCatBar = <T extends CatBarState>(state: T): T => {
 const makeCatBarsWork = <T extends CatBarState>(state: T): T => {
   const newGameState = { ...state };
 
-  newGameState.cats += catBarProductionPerSecond(state);
+  newGameState.cats += catBarsProductionPerSecond(state);
   return newGameState;
 };
 
@@ -25,7 +25,7 @@ const canBuyCatBar = <T extends CatBarState>(state: T): boolean => {
   return state.cats >= CATBAR_PRICE;
 };
 
-const catBarProductionPerSecond = (state: CatBarState): number => {
+const catBarsProductionPerSecond = (state: CatBarState): number => {
   return state.catBars * CATBAR_PRODUCTION;
 };
 
@@ -36,5 +36,5 @@ export {
   canBuyCatBar,
   makeCatBarsWork,
   type CatBarState,
-  catBarProductionPerSecond,
+  catBarsProductionPerSecond,
 };
