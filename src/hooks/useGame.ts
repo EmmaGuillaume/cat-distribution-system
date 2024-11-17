@@ -1,8 +1,13 @@
 import * as Game from "@/domain/game";
-import { useEffect, useState } from "react";
+import { INITIAL_GAME_STATE } from "@/domain/game";
+import { useLocalStorage } from "@uidotdev/usehooks";
+import { useEffect } from "react";
 
-const useGame = (initialGameState: Game.GameState) => {
-  const [gameState, setGameState] = useState(initialGameState);
+const useGame = () => {
+  const [gameState, setGameState] = useLocalStorage<Game.GameState>(
+    "cat_distribution_system.game_state",
+    { ...INITIAL_GAME_STATE }
+  );
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -12,7 +17,7 @@ const useGame = (initialGameState: Game.GameState) => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [gameState]);
+  }, [gameState, setGameState]);
 
   const apply = (fn: Game.GameAction<Game.GameState>) =>
     setGameState(fn(gameState));
