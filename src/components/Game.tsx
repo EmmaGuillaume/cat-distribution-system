@@ -1,3 +1,4 @@
+import { BuyConstructionButton } from "@/components/BuyConstructionsButton";
 import {
   CATBAR_PRICE,
   FACTORY_PRICE,
@@ -11,60 +12,58 @@ export default function Game() {
   const game = useGame();
 
   return (
-    <div className="h-svh w-full flex flex-col items-center justify-center gap-4">
+    <div className="h-screen w-full flex flex-col items-center justify-between gap-4">
       <h1 className="text-xl">Cat Distribution System</h1>
       <div>
         <p>
           {game.state.cats} cats - {game.catsPerIteration} cats/s
         </p>
-        <p>{game.state.grannies} grannies</p>
-        <p>{game.state.catBars} catBars</p>
-        <p>{game.state.trucks} trucks</p>
-        <p>{game.state.factories} factories</p>
-        <p>{game.state.researchCenters} research centers</p>
       </div>
-      <button onClick={game.click} className="px-4 py-2 border rounded-xl">
-        Make a cat - free
-      </button>
-      <button
-        disabled={!game.canBuyGranny}
-        onClick={game.buyGranny}
-        className="px-4 py-2 border rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        Buy a granny - {GRANNY_PRICE} cats
-      </button>
 
-      <button
-        disabled={!game.canBuyCatBar}
-        onClick={game.buyCatBar}
-        className="px-4 py-2 border rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        Buy a cat bar - {CATBAR_PRICE} cats
-      </button>
+      <div className="w-screen h-80 bg-slate-200 p-4 flex  gap-4 overflow-x-scroll ">
+        <BuyConstructionButton
+          onClick={game.click}
+          quantity={0}
+          price={0}
+          title="Make a cat"
+        />
+        <BuyConstructionButton
+          onClick={game.buyGranny}
+          quantity={game.state.grannies}
+          price={GRANNY_PRICE}
+          title="Buy a granny"
+          disabled={!game.canBuyGranny}
+        />
 
-      <button
-        disabled={!game.canBuyTruck}
-        onClick={game.buyTruck}
-        className="px-4 py-2 border rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        Buy a truck - {TRUCK_PRICE} cats
-      </button>
-
-      <button
-        disabled={!game.canBuyFactory}
-        onClick={game.buyFactory}
-        className="px-4 py-2 border rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        Buy a factory - {FACTORY_PRICE} cats
-      </button>
-
-      <button
-        disabled={!game.canBuyResearchCenter}
-        onClick={game.buyResearchCenter}
-        className="px-4 py-2 border rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        Buy a research center - {RESEARCH_CENTER_PRICE} cats
-      </button>
+        <BuyConstructionButton
+          onClick={game.buyCatBar}
+          quantity={game.state.catBars}
+          price={CATBAR_PRICE}
+          title="Buy a cat bar"
+          disabled={!game.canBuyCatBar}
+        />
+        <BuyConstructionButton
+          onClick={game.buyTruck}
+          quantity={game.state.trucks}
+          price={TRUCK_PRICE}
+          title="Buy a truck"
+          disabled={!game.canBuyTruck}
+        />
+        <BuyConstructionButton
+          onClick={game.buyFactory}
+          quantity={game.state.factories}
+          price={FACTORY_PRICE}
+          title="Make a factory"
+          disabled={!game.canBuyFactory}
+        />
+        <BuyConstructionButton
+          onClick={game.buyResearchCenter}
+          quantity={game.state.researchCenters}
+          price={RESEARCH_CENTER_PRICE}
+          title="Make a research center"
+          disabled={!game.canBuyResearchCenter}
+        />
+      </div>
     </div>
   );
 }
