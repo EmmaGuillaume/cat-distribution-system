@@ -7,17 +7,34 @@ import {
   TRUCK_PRICE,
 } from "@/domain/game";
 import { useGame } from "@/hooks/useGame";
+import Image from "next/image";
 
 export default function Game() {
   const game = useGame();
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-between gap-4">
-      <h1 className="text-xl">Cat Distribution System</h1>
-      <div>
-        <p>
-          {game.state.cats} cats - {game.catsPerIteration} cats/s
-        </p>
+    <div className="h-screen w-full flex flex-col items-center justify-between gap-4 cursor-default">
+      <div className="w-screen bg-slate-200 p-4 flex gap-4">
+        <h1 className="text-xl">Cat Distribution System</h1>
+      </div>
+      <div className="flex flex-col gap-4 items-center">
+        <div className="flex flex-col items-center">
+          <p>{game.state.cats} cats</p>
+          <p>{game.catsPerIteration} cats per second</p>
+        </div>
+
+        <button
+          onClick={game.click}
+          className="transform transition-transform duration-200 ease-in-out active:scale-90 cursor-pointers"
+        >
+          <Image
+            src="/cats/cat.webp"
+            alt="cat"
+            width={300}
+            height={300}
+            className="inline"
+          />
+        </button>
       </div>
 
       <div className="w-screen h-80 bg-slate-200 p-4 flex  gap-4 overflow-x-scroll ">

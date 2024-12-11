@@ -12,6 +12,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      cursor: {
+        default: "url(/cursor-default.cur), default",
+        pointers: "url(/cursor-pointer.cur), pointer",
+      },
     },
   },
   plugins: [],

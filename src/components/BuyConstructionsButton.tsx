@@ -17,7 +17,7 @@ export const BuyConstructionButton = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className="border rounded-xl bg-white h-full min-w-72 overflow-hidden flex flex-col disabled:opacity-40 transform transition-transform duration-200 ease-in-out active:scale-95"
+      className="border rounded-xl bg-white h-full min-w-72 overflow-hidden flex flex-col disabled:opacity-40 transform transition-transform duration-200 ease-in-out active:scale-95 cursor-pointers"
     >
       <div className="bg-slate-100 h-1/2 w-full"></div>
 
