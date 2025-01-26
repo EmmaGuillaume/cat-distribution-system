@@ -13,7 +13,7 @@ export default function Game() {
   const game = useGame();
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-between gap-4 cursor-default">
+    <div className="h-screen w-full flex flex-col items-center justify-between gap-4 bg-pink-50">
       <div className="w-screen bg-slate-200 p-4 flex gap-4">
         <h1 className="text-xl">Cat Distribution System</h1>
       </div>
@@ -25,7 +25,7 @@ export default function Game() {
 
         <button
           onClick={game.click}
-          className="transform transition-transform duration-200 ease-in-out active:scale-90 cursor-pointers"
+          className="transform transition-transform duration-200 ease-in-out active:scale-90 "
         >
           <Image
             src="/cats/cat.webp"
@@ -37,48 +37,47 @@ export default function Game() {
         </button>
       </div>
 
-      <div className="w-screen h-80 bg-slate-200 p-4 flex  gap-4 overflow-x-scroll ">
-        <BuyConstructionButton
-          onClick={game.click}
-          quantity={0}
-          price={0}
-          title="Make a cat"
-        />
+      <div className="w-screen h-56 bg-pink-100 p-4 flex  gap-4 overflow-x-scroll ">
         <BuyConstructionButton
           onClick={game.buyGranny}
           quantity={game.state.grannies}
           price={GRANNY_PRICE}
-          title="Buy a granny"
+          title="Granny"
           disabled={!game.canBuyGranny}
+          imgName="granny"
         />
 
         <BuyConstructionButton
           onClick={game.buyCatBar}
           quantity={game.state.catBars}
           price={CATBAR_PRICE}
-          title="Buy a cat bar"
+          title="Cat bar"
           disabled={!game.canBuyCatBar}
+          imgName="catBar"
         />
         <BuyConstructionButton
           onClick={game.buyTruck}
           quantity={game.state.trucks}
           price={TRUCK_PRICE}
-          title="Buy a truck"
+          title="Truck"
           disabled={!game.canBuyTruck}
+          imgName="truck"
         />
         <BuyConstructionButton
           onClick={game.buyFactory}
           quantity={game.state.factories}
           price={FACTORY_PRICE}
-          title="Make a factory"
+          title="Factory"
           disabled={!game.canBuyFactory}
+          imgName="factory"
         />
         <BuyConstructionButton
           onClick={game.buyResearchCenter}
           quantity={game.state.researchCenters}
           price={RESEARCH_CENTER_PRICE}
-          title="Make a research center"
+          title="Research center"
           disabled={!game.canBuyResearchCenter}
+          imgName="research"
         />
       </div>
     </div>

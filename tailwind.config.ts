@@ -8,13 +8,16 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        bayon: ['"Bayon"', "cursive"],
+        lexend: ['"Lexend"', "cursive"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-      },
-      cursor: {
-        default: "url(/cursor-default.cur), default",
-        pointers: "url(/cursor-pointer.cur), pointer",
+        "pink-50": "#FFE9EF",
+        "pink-100": "#FFCAD8",
+        bordeaux: "#7B1818",
       },
     },
   },
